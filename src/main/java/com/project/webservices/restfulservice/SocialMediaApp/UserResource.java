@@ -2,9 +2,7 @@ package com.project.webservices.restfulservice.SocialMediaApp;
 
 import com.project.webservices.restfulservice.SocialMediaApp.Dao.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +24,11 @@ public class UserResource {
     @GetMapping(path="/users/{id}")
     public User getUserById(@PathVariable int id){
         return userDaoService.findOne(id);
+    }
+
+    @PostMapping("/users")
+    public void createUser(@RequestBody User user){
+        userDaoService.save(user);
     }
 
 }
