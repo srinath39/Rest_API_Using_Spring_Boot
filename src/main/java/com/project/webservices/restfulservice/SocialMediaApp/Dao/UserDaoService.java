@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Component
 public class UserDaoService {
@@ -35,8 +36,8 @@ public class UserDaoService {
         return user;
     }
 
-    // get all users
-    // get a specific user
-    // create a user
-    // delete a user
+    public void deleteUserById(Integer id) {
+        Predicate<? super User> predicate= user -> user.getId().equals(id);
+        allUsers.removeIf(predicate);
+    }
 }
