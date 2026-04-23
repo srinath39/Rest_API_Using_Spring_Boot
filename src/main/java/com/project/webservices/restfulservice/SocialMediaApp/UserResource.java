@@ -1,6 +1,7 @@
 package com.project.webservices.restfulservice.SocialMediaApp;
 
 import com.project.webservices.restfulservice.SocialMediaApp.Dao.UserDaoService;
+import com.project.webservices.restfulservice.SocialMediaApp.ExceptionHandlers.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,11 @@ public class UserResource {
 
     @GetMapping(path="/users/{id}")
     public User getUserById(@PathVariable int id){
-        return userDaoService.findOne(id);
+        User user = userDaoService.findOne(id);
+        if(user==null){
+            throw new UserNotFoundException("id: "+id);
+        }
+        return user;
     }
 
     @PostMapping("/users")
