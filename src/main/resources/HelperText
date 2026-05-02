@@ -1,8 +1,0 @@
-Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.project
-.webservices.restfulservice.SocialMediaApp.User> com.project.webservices.restfulservice.SocialMediaApp.
-UserResource.createUser(com.project.webservices.restfulservice.SocialMediaApp.User) with 2 errors:
-[Field error in object 'user' on field 'birthDate': rejected value [2056-11-17];
-codes [Past.user.birthDate,Past.birthDate,Past.java.time.LocalDate,Past]; arguments
-[org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.birthDate,birthDate]; arguments [];
-default message [birthDate]]; default message [date should be of past]] [Field error in object 'user' on field 'name': rejected value []; codes [Size.user.name,Size.name,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.name,name]; arguments [];
- default message [name],2147483647,2]; default message [name should be alteast of size 2]]
