@@ -30,4 +30,16 @@ public class VersionPersonController {
         return new Person2(new Name("Srinath","Mangali"));
     }
 
+    // http://localhost:8080/person
+    @GetMapping(path="/person",headers ="GET-PERSON-API-VERSION=1")
+    public Person1 getFirstVersionPersonCustomHeader(){
+        return new Person1("Srinath Mangali");
+    }
+
+    // http://localhost:8080/person
+    @GetMapping(path="/person",headers ="GET-PERSON-API-VERSION=2")
+    public Person2 getSecondVersionPersonCustomHeader(){
+        return new Person2(new Name("Srinath","Mangali"));
+    }
+
 }
