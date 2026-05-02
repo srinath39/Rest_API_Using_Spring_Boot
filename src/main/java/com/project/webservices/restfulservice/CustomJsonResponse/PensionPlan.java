@@ -1,13 +1,18 @@
 package com.project.webservices.restfulservice.CustomJsonResponse;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 public class PensionPlan {
 
+    @JsonView(View.ViewForPensionPlan.class)
     private String field1;
 
-    @JsonIgnore
+//    @JsonIgnore
+    @JsonView({View.ViewForPensionPlan.class,View.ViewForPensionPlanList.class})
     private String field2;
+
+    @JsonView(View.ViewForPensionPlanList.class)
     private String field3;
 
     public PensionPlan(String field1, String field2, String field3) {
