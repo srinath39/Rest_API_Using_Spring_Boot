@@ -8,13 +8,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class VersionRestControllerSB {
+//    http://localhost:8080/person?version=2
+//    @GetMapping(path="/{version}/person",version="1.0.0")
+//    public Person1 getFirstPersonPathParameter(){
+//        return new Person1("Bala Shiva");
+//    }
+//
+//    @GetMapping(path="/{version}/person",version="2.0.0")
+//    public Person2 getSecondPersonPathParameter(){
+//        return new Person2(new Name("Bala","Shiva"));
+//    }
 
-    @GetMapping(path="/{version}/person",version="1.0.0")
+    // http://localhost:8080/person?version=1   , String version need to match with the query parameter in Configuration
+    @GetMapping(path="/person",version="1.0.0")
     public Person1 getFirstPersonPathParameter(){
         return new Person1("Bala Shiva");
     }
 
-    @GetMapping(path="/{version}/person",version="2.0.0")
+    // http://localhost:8080/person?version=2
+    @GetMapping(path="/person",version="2.0.0")
     public Person2 getSecondPersonPathParameter(){
         return new Person2(new Name("Bala","Shiva"));
     }
