@@ -20,16 +20,16 @@ public class VersionRestControllerSB {
 //        return new Person2(new Name("Bala","Shiva"));
 //    }
 
-    // http://localhost:8080/person?version=1   , String version need to match with the query parameter in Configuration
-    // http://localhost:8080/person  (custom header:  GET-PERSON-API-VERSION=2)
-    // http://localhost:8080/person  (media type header:  accept=application/json;version=1)
-    @GetMapping(path="/person",version="1.0.0")
-    public Person1 getFirstPersonPathParameter(){
-        return new Person1("Bala Shiva");
-    }
-
-    @GetMapping(path="/person",version="2.0.0")
-    public Person2 getSecondPersonPathParameter(){
-        return new Person2(new Name("Bala","Shiva"));
-    }
+//    // http://localhost:8080/person?version=1   , String version need to match with the query parameter in Configuration
+//    // http://localhost:8080/person  (custom header:  GET-PERSON-API-VERSION=2)
+//    // http://localhost:8080/person  (media type header:  accept=application/json;version=1)
+//    @GetMapping(path="/person",version="1.0.0")
+//    public Person1 getFirstPersonPathParameter(){
+//        return new Person1("Bala Shiva");
+//    }
+//
+//    @GetMapping(path="/person",version="2.0.0")
+//    public Person2 getSecondPersonPathParameter(){
+//        return new Person2(new Name("Bala","Shiva"));
+//    }
 }
