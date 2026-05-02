@@ -31,15 +31,30 @@ public class VersionPersonController {
     }
 
     // http://localhost:8080/person
+    // header:  GET-PERSON-API-VERSION=1
     @GetMapping(path="/person",headers ="GET-PERSON-API-VERSION=1")
     public Person1 getFirstVersionPersonCustomHeader(){
         return new Person1("Srinath Mangali");
     }
 
     // http://localhost:8080/person
+    // header:  GET-PERSON-API-VERSION=2
     @GetMapping(path="/person",headers ="GET-PERSON-API-VERSION=2")
     public Person2 getSecondVersionPersonCustomHeader(){
         return new Person2(new Name("Srinath","Mangali"));
     }
 
+    // http://localhost:8080/person
+    // header:  Accept = application/socialMediaApp-v1+json
+    @GetMapping(path="/person",produces ="application/socialMediaApp-v1+json")
+    public Person1 getFirstVersionPersonAcceptHeader(){
+        return new Person1("Srinath Mangali");
+    }
+
+    // http://localhost:8080/person
+    // header:  Accept = application/socialMediaApp-v2+json
+    @GetMapping(path="/person",produces ="application/socialMediaApp-v2+json")
+    public Person2 getSecondVersionPersonAcceptHeader(){
+        return new Person2(new Name("Srinath","Mangali"));
+    }
 }
