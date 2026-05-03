@@ -1,4 +1,4 @@
-package com.project.webservices.restfulservice.SocialMediaApp.ExceptionHandlers.ExceptionDetails.User;
+package com.project.webservices.restfulservice.SocialMediaApp.ExceptionHandlers.ExceptionDetails;
 
 import java.time.LocalDateTime;
 

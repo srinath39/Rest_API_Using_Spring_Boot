@@ -1,7 +1,8 @@
 package com.project.webservices.restfulservice.SocialMediaApp.RestApiUserJpa;
 
+import com.project.webservices.restfulservice.SocialMediaApp.ExceptionHandlers.PostNotFoundException;
 import com.project.webservices.restfulservice.SocialMediaApp.ExceptionHandlers.UserNotFoundException;
-import com.project.webservices.restfulservice.SocialMediaApp.RestApiUserJpa.Repositoy.UserRepository;
+import com.project.webservices.restfulservice.SocialMediaApp.RestApiUserJpa.Repositoy.IUserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
@@ -20,10 +21,10 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 public class UserResourceJpa {
 
-    private UserRepository userRepository;
+    private IUserRepository userRepository;
 
     @Autowired
-    public UserResourceJpa(UserRepository userRepository){
+    public UserResourceJpa(IUserRepository userRepository){
         this.userRepository=userRepository;
     }
 
@@ -66,6 +67,19 @@ public class UserResourceJpa {
             throw new UserNotFoundException("id: " + id);
         }
         return user.get().getAllUserPosts();
+    }
+
+    @GetMapping("/jpa/users/{user_id}/posts/{post_id}")
+    public PostJpa getPostByIdOfUser(@PathVariable int user_id ,@PathVariable int post_id){
+        Optional<UserJpa> user = userRepository.findById(user_id);
+        if(user.isEmpty()) {
+            throw new UserNotFoundException("id: " + user_id);
+        }
+        PostJpa post= user.get().getAllUserPosts().stream().filter(p -> p.getId()==post_id).findFirst().orElse(null);
+        if(post==null){
+            throw new PostNotFoundException("id: "+post_id);
+        }
+        return post;
     }
 
 }

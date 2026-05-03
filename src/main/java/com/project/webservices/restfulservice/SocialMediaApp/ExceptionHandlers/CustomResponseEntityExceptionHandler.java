@@ -1,6 +1,6 @@
 package com.project.webservices.restfulservice.SocialMediaApp.ExceptionHandlers;
 
-import com.project.webservices.restfulservice.SocialMediaApp.ExceptionHandlers.ExceptionDetails.User.ErrorDetails;
+import com.project.webservices.restfulservice.SocialMediaApp.ExceptionHandlers.ExceptionDetails.ErrorDetails;
 import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -25,6 +25,12 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 
     @ExceptionHandler(UserNotFoundException.class)
     public final ResponseEntity<ErrorDetails> handleUserNotFoundExceptions(Exception ex, WebRequest request) {
+        ErrorDetails errorDetails=new ErrorDetails(LocalDateTime.now(),ex.getMessage(),request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PostNotFoundException.class)
+    public final ResponseEntity<ErrorDetails> handlePostNotFoundExceptions(Exception ex, WebRequest request) {
         ErrorDetails errorDetails=new ErrorDetails(LocalDateTime.now(),ex.getMessage(),request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
