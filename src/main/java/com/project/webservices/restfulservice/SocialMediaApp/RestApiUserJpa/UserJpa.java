@@ -32,7 +32,6 @@ public class UserJpa {
     private List<PostJpa> AllUserPosts;
 
     public UserJpa(){
-
     }
 
     public UserJpa(Integer id, String name, LocalDate birthDate) {
