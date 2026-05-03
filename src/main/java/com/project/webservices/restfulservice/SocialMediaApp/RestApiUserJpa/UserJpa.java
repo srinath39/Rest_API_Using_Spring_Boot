@@ -34,6 +34,14 @@ public class UserJpa {
     public UserJpa(){
     }
 
+    public List<PostJpa> getAllUserPosts() {
+        return AllUserPosts;
+    }
+
+    public void setAllUserPosts(List<PostJpa> allUserPosts) {
+        AllUserPosts = allUserPosts;
+    }
+
     public UserJpa(Integer id, String name, LocalDate birthDate) {
         this.id = id;
         this.name = name;

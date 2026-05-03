@@ -59,4 +59,13 @@ public class UserResourceJpa {
         userRepository.deleteById(id);
     }
 
+    @GetMapping(path="/jpa/users/{id}/posts")
+    public List<PostJpa> getAllPostsOfUser(@PathVariable int id){
+        Optional<UserJpa> user = userRepository.findById(id);
+        if(user.isEmpty()) {
+            throw new UserNotFoundException("id: " + id);
+        }
+        return user.get().getAllUserPosts();
+    }
+
 }
