@@ -1,6 +1,6 @@
-package com.project.webservices.restfulservice.SocialMediaApp.Dao;
+package com.project.webservices.restfulservice.SocialMediaApp.RestApiUser.Dao;
 
-import com.project.webservices.restfulservice.SocialMediaApp.User;
+import com.project.webservices.restfulservice.SocialMediaApp.RestApiUser.User;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;

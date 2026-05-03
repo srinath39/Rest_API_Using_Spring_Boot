@@ -1,23 +1,34 @@
-package com.project.webservices.restfulservice.SocialMediaApp;
+package com.project.webservices.restfulservice.SocialMediaApp.RestApiUserJpa;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
-public class User {
+@Entity(name="user_details")   // here User is a keyword in H2 database ,so renamed the entity name
+public class UserJpa {
+
+    @Id   // acts as a primary key in user_details table
+    @GeneratedValue  // automatically a new id is generated when a record is added to the user_details table
     private Integer id;
 
     @Size(min=2, message="name should be alteast of size 2")
-    @JsonProperty("User_name")
+//    @JsonProperty("User_name") , remember this JsonProperty works both for object -> Json and Json -> Object
     private String name;
 
     @Past(message="date should be of past")
-    @JsonProperty("birth_date")
+//    @JsonProperty("birth_date")
     private LocalDate birthDate;
 
-    public User(Integer id, String name, LocalDate birthDate) {
+    public UserJpa(){
+
+    }
+
+    public UserJpa(Integer id, String name, LocalDate birthDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
