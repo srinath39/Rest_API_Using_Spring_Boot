@@ -1,13 +1,16 @@
 package com.project.webservices.restfulservice.SocialMediaApp.RestApiUserJpa;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name="user_details")   // here User is a keyword in H2 database ,so renamed the entity name
 public class UserJpa {
@@ -23,6 +26,10 @@ public class UserJpa {
     @Past(message="date should be of past")
 //    @JsonProperty("birth_date")
     private LocalDate birthDate;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<PostJpa> AllUserPosts;
 
     public UserJpa(){
 
